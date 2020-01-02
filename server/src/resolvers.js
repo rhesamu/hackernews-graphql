@@ -1,31 +1,18 @@
-let links = [{
-  id: 'link-0',
-  url: 'www.howtographql.com',
-  description: 'Fullstack for graphql'
-}];
-
-let idCount = links.length;
-
 /**
  * Resolvers object is the actual implementation of the GraphQL schema.
  */
+
 const resolvers = {
   Query: {
     info: () => 'This is the API of a Hackernews Clone',
-    feed: () => links,
-    link: (parent, args) => links.find(item => item.id === args.id)
+    feed: (root, args, context, info) => context.prisma.links(),
+    link: (parent, args, context) => context.prisma.link({ id: args.id })
   },
   Mutation: {
-    post: (parent, args) => {
-      const link = {
-        id: `link-${idCount++}`,
-        description: args.description,
-        url: args.url
-      }
-
-      links.push(link);
-      return link;
-    }
+    post: (root, args, context) => context.prisma.createLink({
+      url: args.url,
+      description: args.description
+    })
   },
   Link: {
     id: parent => parent.id,

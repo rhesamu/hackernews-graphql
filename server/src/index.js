@@ -1,13 +1,12 @@
 const { GraphQLServer } = require('graphql-yoga');
+const { prisma } = require('./generated/prisma-client');
+
 const resolvers = require('./resolvers');
 
-/**
- * TypeDefs defines the GraphQL schema.
- * The exclamation mark (!) means that the field can never be null
- */
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
-  resolvers
+  resolvers,
+  context: { prisma }
 });
 
 const PORT = 4000;
