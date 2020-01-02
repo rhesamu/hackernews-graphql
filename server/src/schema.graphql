@@ -1,3 +1,6 @@
+# TypeDefs defines the GraphQL schema.
+# The exclamation mark (!) means that the field can never be null
+
 type Query {
   info: String!
   feed: [Link!]!,

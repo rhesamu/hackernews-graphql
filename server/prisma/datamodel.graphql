@@ -1,0 +1,9 @@
+# Prisma is an ORM, think of it like Mongoose as an ORM to a database,
+# but this one is optimized for GraphQL.
+
+type Link {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  description: String!
+  url: String!
+}
