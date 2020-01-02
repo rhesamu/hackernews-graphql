@@ -1,19 +1,12 @@
 const { GraphQLServer } = require('graphql-yoga');
+const resolvers = require('./resolvers');
 
-const typeDefs = `
-  type Query {
-    info: String!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    info: () => 'This is a Hackernews clone API'
-  }
-};
-
+/**
+ * TypeDefs defines the GraphQL schema.
+ * The exclamation mark (!) means that the field can never be null
+ */
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: './src/schema.graphql',
   resolvers
 });
 
