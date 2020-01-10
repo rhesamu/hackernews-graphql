@@ -8,7 +8,13 @@ const resolvers = require('./resolvers');
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
   resolvers,
-  context: { prisma }
+  context: request => {
+    // console.log('request', request);
+    return {
+      ...request,
+      prisma
+    };
+  }
 });
 
 const PORT = 4000;

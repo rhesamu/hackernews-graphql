@@ -1,9 +1,7 @@
-const id = root => root.id;
-const description = root => root.description;
-const url = root => root.url;
+function postedBy(root, args, context) {
+  return context.prisma.link({ id: parent.id }).postedBy();
+}
 
 module.exports = {
-  id,
-  description,
-  url
-}
+  postedBy
+};

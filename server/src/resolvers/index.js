@@ -5,11 +5,13 @@
 const Query = require('./Query');
 const Mutation = require('./Mutation');
 const Link = require('./Link');
+const User = require('./User');
 
 const resolvers = {
   Query,
   Mutation,
-  Link
+  Link,
+  User
 };
 
 module.exports = resolvers;
