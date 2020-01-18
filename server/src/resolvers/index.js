@@ -6,12 +6,12 @@ const Query = require('./Query');
 const Mutation = require('./Mutation');
 const Link = require('./Link');
 const User = require('./User');
+const Subscription = require('./Subscription');
 
-const resolvers = {
+module.exports = {
   Query,
   Mutation,
+  Subscription,
   Link,
   User
 };
-
-module.exports = resolvers;

@@ -9,7 +9,6 @@ const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
   resolvers,
   context: request => {
-    // console.log('request', request);
     return {
       ...request,
       prisma
@@ -17,9 +16,8 @@ const server = new GraphQLServer({
   }
 });
 
-const PORT = 4000;
 const options = {
-  port: PORT,
+  port: process.env.PORT,
   endpoint: '/',
   subscriptions: '/',
   playground: '/playground'
